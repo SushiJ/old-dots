@@ -5,6 +5,7 @@ pgrep -x sxhkd >/dev/null || sxhkd &
 $HOME/.config/polybar/launch.sh &
 # feh --bg-fill $HOME/Downloads/walls/attack-on-titan.jpg &
 feh --bg-fill $HOME/Downloads/wall2/wallpapers/b-367.jpg &
+dunst -conf $HOME/.config/dunst/dunstrc &
 picom --experimental-backends &
 xfce4-power-manager &
 blueman-applet &
