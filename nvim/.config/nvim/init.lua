@@ -1,1 +1,1 @@
-require("sushi.lazy")
+require("sushi")

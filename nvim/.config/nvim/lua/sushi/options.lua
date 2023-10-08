@@ -1,4 +1,3 @@
--- This file is automatically loaded by plugins.config
 local opt = vim.opt
 
 opt.guicursor = ""
