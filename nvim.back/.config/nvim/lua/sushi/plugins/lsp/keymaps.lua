@@ -66,7 +66,6 @@ function M.on_attach(client, buffer)
 	for _, keys in pairs(keymaps) do
 		if not keys.has or client.server_capabilities[keys.has .. "Provider"] then
 			local opts = Keys.opts(keys)
-			---@diagnostic disable-next-line: no-unknown
 			opts.has = nil
 			opts.silent = true
 			opts.buffer = buffer
