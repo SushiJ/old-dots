@@ -1,15 +1,11 @@
 local Util = require("sushi.util")
 
 local function map(mode, lhs, rhs, opts)
-	local keys = require("lazy.core.handler").handlers.keys
-	---@cast keys LazyKeysHandler
-	-- do not create the keymap if a lazy keys handler exists
-	if not keys.active[keys.parse({ lhs, mode = mode }).id] then
-		opts = opts or {}
-		opts.silent = opts.silent ~= false
-		vim.keymap.set(mode, lhs, rhs, opts)
-	end
+    opts = opts or {}
+    opts.silent = opts.silent ~= false
+    vim.keymap.set(mode, lhs, rhs, opts)
 end
+
 if Util.has("bufferline.nvim") then
   map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
   map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
@@ -54,10 +50,10 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
 map(
-"n",
-"<leader>ur",
-"<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
-{ desc = "Redraw / clear hlsearch / diff update" }
+  "n",
+  "<leader>ur",
+  "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+  { desc = "Redraw / clear hlsearch / diff update" }
 )
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
@@ -80,7 +76,7 @@ map("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
 
 -- highlights under cursor
 if vim.fn.has("nvim-0.9.0") == 1 then
-	map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
+  map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 end
 
 -- windows
@@ -101,8 +97,17 @@ map("n", "N", "Nzzzv", cc)
 map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to clipboard" })
 map("n", "<leader>Y", [["+Y]], { desc = "Yank to something?" })
 
+-- new file
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+
 -- YEP
 map("i", "<C-c>", "<Esc>", { desc = "Normal mode" })
 
 -- chmod
 map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "chmod +X", silent = true })
+
+-- misc.
+map("n", "<leader>gS", vim.cmd.Git, { desc = "Fugitive" })
+map("n", "<leader>utt", vim.cmd.UndotreeToggle, { desc = "Toggle undoTree" })
+map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
+map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })

@@ -50,6 +50,7 @@ local opts = {
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.loaded_netrwPlugin = 0
 
 require("lazy").setup("sushi.plugins", opts)
 require("sushi.autocmds")
