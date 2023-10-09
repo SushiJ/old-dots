@@ -28,7 +28,7 @@ local opts = {
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
   install = { missing = true, colorscheme = { "tokyonight" } },
-  -- change_detection = { enabled = true, notify = false },
+  change_detection = { enabled = false, notify = false },
   checker = { enabled = false }, -- automatically check for plugin updates
   performance = {
     rtp = {
@@ -37,7 +37,7 @@ local opts = {
         "gzip",
         -- "matchit",
         -- "matchparen",
-        -- "netrwPlugin",
+        "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
@@ -50,7 +50,6 @@ local opts = {
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.loaded_netrwPlugin = 0
 
 require("lazy").setup("sushi.plugins", opts)
 require("sushi.autocmds")

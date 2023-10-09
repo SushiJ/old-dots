@@ -14,8 +14,33 @@ return {
           go({ severity = severity })
         end
       end
-      lsp_zero.on_attach(function(_client, bufnr)
+      lsp_zero.on_attach(function(client, bufnr)
         lsp_zero.default_keymaps({buffer = bufnr})
+
+        if client.supports_method("textDocument/formatting") then
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            group = vim.api.nvim_create_augroup("LspFormat." .. bufnr, {}),
+            buffer = bufnr,
+            callback = function()
+              if vim.b.autoformat == false then
+                return
+              end
+              local ft = vim.bo[bufnr].filetype
+              local have_nls = #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
+
+              vim.lsp.buf.format(vim.tbl_deep_extend("force", {
+                bufnr = bufnr,
+                filter = function()
+                  if have_nls then
+                    return client.name == "null-ls"
+                  end
+                  return client.name ~= "null-ls"
+                end,
+              }, require("sushi.util").opts("lspconfig").format or {}))
+            end,
+          })
+        end
+
         local map = function(mode, keys, func, desc)
           if desc then
             desc = 'LSP: ' .. desc
