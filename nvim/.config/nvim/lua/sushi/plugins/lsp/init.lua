@@ -1,7 +1,7 @@
 return {
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v3.x',
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v3.x",
     lazy = true,
     config = function()
       local lsp_zero = require("lsp-zero")
@@ -15,7 +15,7 @@ return {
         end
       end
       lsp_zero.on_attach(function(client, bufnr)
-        lsp_zero.default_keymaps({buffer = bufnr})
+        lsp_zero.default_keymaps({ buffer = bufnr })
 
         if client.supports_method("textDocument/formatting") then
           vim.api.nvim_create_autocmd("BufWritePre", {
@@ -43,43 +43,42 @@ return {
 
         local map = function(mode, keys, func, desc)
           if desc then
-            desc = 'LSP: ' .. desc
+            desc = "LSP: " .. desc
           end
 
-          vim.keymap.set(mode or 'n', keys, func, { buffer = bufnr, desc = desc, silent = true })
+          vim.keymap.set(mode or "n", keys, func, { buffer = bufnr, desc = desc, silent = true })
         end
 
-        map("", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostics" )
+        map("", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
         map("", "<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
-        map("", "gd", "<cmd>Telescope lsp_definitions<cr>", "Goto Definition" )
-        map("", "gr", "<cmd>Telescope lsp_references<cr>", "References" )
-        map("", "gD", vim.lsp.buf.declaration, "Goto Declaration" )
-        map("", "gI", "<cmd>Telescope lsp_implementations<cr>", "Goto Implementation" )
+        map("", "gd", "<cmd>Telescope lsp_definitions<cr>", "Goto Definition")
+        map("", "gr", "<cmd>Telescope lsp_references<cr>", "References")
+        map("", "gD", vim.lsp.buf.declaration, "Goto Declaration")
+        map("", "gI", "<cmd>Telescope lsp_implementations<cr>", "Goto Implementation")
         map("", "gt", "<cmd>Telescope lsp_type_definitions<cr>", "Goto Type Definition")
         map("", "K", pretty_hover.hover, "Hover")
         map("", "gK", vim.lsp.buf.signature_help, "Signature Help")
-        map("i", "<C-k>", vim.lsp.buf.signature_help,  "Signature Help")
-        map("", "]d", diagnostic_goto(true), "Next Diagnostic" )
-        map("", "[d", diagnostic_goto(false), "Prev Diagnostic" )
-        map("", "]e", diagnostic_goto(true, "ERROR"), "Next Error" )
-        map("", "[e", diagnostic_goto(false, "ERROR"), "Prev Error" )
-        map("", "]w", diagnostic_goto(true, "WARN"), "Next Warning" )
-        map("", "[w", diagnostic_goto(false, "WARN"), "Prev Warning" )
-        map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action" )
-
+        map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
+        map("", "]d", diagnostic_goto(true), "Next Diagnostic")
+        map("", "[d", diagnostic_goto(false), "Prev Diagnostic")
+        map("", "]e", diagnostic_goto(true, "ERROR"), "Next Error")
+        map("", "[e", diagnostic_goto(false, "ERROR"), "Prev Error")
+        map("", "]w", diagnostic_goto(true, "WARN"), "Next Warning")
+        map("", "[w", diagnostic_goto(false, "WARN"), "Prev Warning")
+        map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
       end)
     end,
   },
   -- LSP Support
   {
-    'neovim/nvim-lspconfig',
+    "neovim/nvim-lspconfig",
     dependencies = {
-      {'hrsh7th/cmp-nvim-lsp'},
-    }
+      { "hrsh7th/cmp-nvim-lsp" },
+    },
   },
   -- Autocompletion
   {
-    'hrsh7th/nvim-cmp',
+    "hrsh7th/nvim-cmp",
     version = false, -- last release is way too old
     event = "InsertEnter",
 
@@ -87,10 +86,11 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      {'L3MON4D3/LuaSnip'}
+      { "L3MON4D3/LuaSnip" },
     },
     opts = function()
       local cmp = require("cmp")
+      local cmp_window = require("cmp.config.window")
       return {
         completion = {
           completeopt = "menu,menuone,noinsert",
@@ -99,6 +99,10 @@ return {
           expand = function(args)
             require("luasnip").lsp_expand(args.body)
           end,
+        },
+        window = {
+          completion = cmp_window.bordered(),
+          documentation = cmp_window.bordered(),
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
