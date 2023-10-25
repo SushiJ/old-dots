@@ -1,7 +1,7 @@
 return {
 
-  { "nvim-lua/plenary.nvim", lazy = true },
-  { "tpope/vim-repeat", event = "VeryLazy" },
+  { "nvim-lua/plenary.nvim",                       lazy = true },
+  { "tpope/vim-repeat",                            event = "VeryLazy" },
 
   { "tpope/vim-fugitive" },
   { "tpope/vim-surround" },
@@ -20,6 +20,7 @@ return {
   --     },
   --   }
   -- },
+  { "akinsho/toggleterm.nvim",                     version = "*",     config = true },
   {
     "nvchad/nvim-colorizer.lua",
     config = function()
@@ -45,12 +46,8 @@ return {
     end,
   },
   {
-    "iamcco/markdown-preview.nvim",
-    build = "cd app && npm install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
-    ft = { "markdown" },
+    "euclio/vim-markdown-composer",
+    build = "cargo build --release",
   },
   {
     "echasnovski/mini.comment",
@@ -67,7 +64,7 @@ return {
     end,
   },
   {
-    'numToStr/Comment.nvim',
+    "numToStr/Comment.nvim",
     opts = {
       -- add any options here
     },
