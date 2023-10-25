@@ -2,7 +2,7 @@
 super + Return
 	kitty
 
-# super + @space
+# Dmenu 
 super + r
 	dmenu_run
 
@@ -10,8 +10,20 @@ super + r
 super + ctrl + f
 	thunar
 
-# Run Alacritty
+# Pcmanfm
+super + ctrl + d
+	pcmanfm
+
+# Pavu
 super + ctrl + a
+  pavucontrol
+
+# Screenshot
+super + ctrl + s
+  shutter
+
+# Run Alacritty
+super + ctrl + t
 	alacritty
 
 # Run Alacritty
@@ -48,7 +60,6 @@ super + g
 
 #
 # state/flags
-#
 
 # set the window state
 super + {t,shift + t,s,f}
