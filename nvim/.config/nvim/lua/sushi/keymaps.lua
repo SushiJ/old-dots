@@ -111,3 +111,5 @@ map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
 map("n", "<leader>ps", vim.cmd.ComposerStart, { desc = "Markdown preview start" })
 map("n", "<leader>po", vim.cmd.ComposerOpen, { desc = "Markdown preview open" })
+
+map("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "Toggle Term" })

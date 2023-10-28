@@ -1,26 +1,21 @@
 return {
 
-  { "nvim-lua/plenary.nvim",                       lazy = true },
-  { "tpope/vim-repeat",                            event = "VeryLazy" },
+  { "nvim-lua/plenary.nvim", lazy = true },
+  { "tpope/vim-repeat",      event = "VeryLazy" },
 
   { "tpope/vim-fugitive" },
   { "tpope/vim-surround" },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
 
   { "mbbill/undotree" },
-  --  { "windwp/nvim-ts-autotag" },
-  { "wuelnerdotexe/vim-astro" },
   { "mattn/emmet-vim" },
   { "uga-rosa/ccc.nvim" },
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
-
-  -- { "neovim/nvim-lspconfig",
-  --   opts = {
-  --     servers = {
-  --       tailwindcss = {},
-  --     },
-  --   }
-  -- },
-  { "akinsho/toggleterm.nvim",                     version = "*",     config = true },
   {
     "nvchad/nvim-colorizer.lua",
     config = function()
@@ -65,9 +60,6 @@ return {
   },
   {
     "numToStr/Comment.nvim",
-    opts = {
-      -- add any options here
-    },
     lazy = false,
   },
 }

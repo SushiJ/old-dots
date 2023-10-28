@@ -4,18 +4,19 @@ pgrep -x sxhkd >/dev/null || sxhkd &
 
 $HOME/.config/polybar/launch.sh &
 # feh --bg-fill $HOME/Downloads/walls/attack-on-titan.jpg &
-feh --bg-fill $HOME/Downloads/wall2/wallpapers/b-367.jpg &
+# feh --bg-fill $HOME/Downloads/wall2/wallpapers/b-367.jpg &
+feh --bg-fill $HOME/Downloads/wallpaps/current.png &
 dunst -conf $HOME/.config/dunst/dunstrc &
 picom --experimental-backends &
 xfce4-power-manager &
 blueman-applet &
 
-# bspc monitor DP-0 -d VI VII VIII X IX
-# bspc monitor DP-4 -d I II III IV V
-# bspc monitor DP-4 -s DP-0
+bspc monitor DP-0 -d V VI VII VIII X IX
+bspc monitor DP-4 -d I II III IV
+bspc monitor DP-4 -s DP-0
 
-bspc monitor DP-0 -d I II III IV V
-bspc monitor DP-4 -d VI VII VIII X IX
+# bspc monitor DP-0 -d I II III IV V
+# bspc monitor DP-4 -d VI VII VIII X IX
 
 bspc config border_width 2
 bspc config window_gap 02
@@ -27,3 +28,4 @@ bspc config borderless_monocle true
 bspc config gapless_monocle true
 
 bspc rule -a Pycalendar.py state=floating rectangle=800x600+1750+510
+bspc rule -a Emacs state=tiled
