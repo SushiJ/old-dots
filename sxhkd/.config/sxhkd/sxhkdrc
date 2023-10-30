@@ -6,6 +6,13 @@ super + Return
 super + r
 	dmenu_run
 
+# Wezterm
+super + ctrl + t
+	wezterm start
+
+super + ctrl + a
+	alacritty
+
 # Run Explorer
 super + ctrl + f
 	thunar
@@ -15,18 +22,14 @@ super + ctrl + d
 	pcmanfm
 
 # Pavu
-super + ctrl + a
+super + ctrl + v
   pavucontrol
 
 # Screenshot
 super + ctrl + s
   shutter
 
-# Run Alacritty
-super + ctrl + t
-	alacritty
-
-# Run Alacritty
+# Run Brave
 super + ctrl + b
 	brave
 
