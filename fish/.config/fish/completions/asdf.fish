@@ -1,0 +1,1 @@
+/home/sushi/.asdf/completions/asdf.fish
