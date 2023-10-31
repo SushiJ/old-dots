@@ -18,11 +18,11 @@ bspc monitor DP-4 -s DP-0
 # bspc monitor DP-0 -d I II III IV V
 # bspc monitor DP-4 -d VI VII VIII X IX
 
-bspc config border_width 2
-bspc config window_gap 02
+bspc config border_width 1
+bspc config window_gap 0
 
 bspc config split_ratio 0.55
-bspc config focused_border_color "#9ccfd8"
+bspc config focused_border_color "#f5a1df"
 bspc config normal_border_color "#6e6a86"
 bspc config borderless_monocle true
 bspc config gapless_monocle true
