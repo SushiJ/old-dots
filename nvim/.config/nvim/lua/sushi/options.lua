@@ -12,7 +12,6 @@ opt.grepprg = "rg --vimgrep"
 opt.ignorecase = true      -- Ignore case
 opt.inccommand = "nosplit" -- preview incremental substitute
 opt.laststatus = 0
-opt.list = true            -- Show some invisible characters (tabs...
 opt.mouse = "a"            -- Enable mouse mode
 opt.number = true          -- Print line number
 opt.pumblend = 10          -- Popup blend
@@ -43,15 +42,18 @@ opt.backup = false
 opt.undofile = true
 ---@diagnostic disable-next-line: assign-type-mismatch
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-opt.updatetime = 50                -- Save swap file and trigger CursorHold
-opt.wildmode = "longest:full,full" -- Command-line completion mode
-opt.winminwidth = 5                -- Minimum window width
-opt.wrap = false                   -- Disable line wrap
+opt.updatetime = 50
+opt.wildmode = "longest:full,full"
+opt.winminwidth = 5 -- Minimum window width
+opt.wrap = false    -- Disable line wrap
 opt.hlsearch = false
 opt.incsearch = true
 opt.colorcolumn = "80"
 opt.encoding = "UTF-8"
 opt.isfname:append("@-@")
+
+opt.list = true
+opt.listchars = { eol = "↴" }
 
 if vim.fn.has("nvim-0.9.0") == 1 then
   opt.splitkeep = "screen"

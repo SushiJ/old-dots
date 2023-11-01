@@ -16,10 +16,11 @@ return {
           "scss",
           "typescript",
           "typescriptreact",
+          "tsx",
+          "ts",
           "yaml",
         },
       })
     end,
   },
 }
-
