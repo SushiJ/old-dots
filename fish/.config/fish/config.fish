@@ -6,6 +6,7 @@ set -g fish_prompt_pwd_dir_length 1
 set -g theme_display_user no
 set -g theme_hide_hostname yes
 set -g theme_hostname never
+set -gx EDITOR "nvim"
 
 # Aliases
 
@@ -26,10 +27,9 @@ alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
 alias dots="cd ~/.dotfiles"
 
-source ~/.asdf/asdf.fish
-
 # ASDF
 set -gx ASDF "$HOME/.asdf"
+source ~/.asdf/asdf.fish
 
 # Go
 set -gx GO "/usr/local/go"
