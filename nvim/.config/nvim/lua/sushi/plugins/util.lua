@@ -22,6 +22,19 @@ return {
   { "uga-rosa/ccc.nvim" },
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   {
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async",
+    },
+    config = function()
+      require("ufo").setup({
+        provider_selector = function()
+          return { "treesitter", "indent" }
+        end,
+      })
+    end,
+  },
+  {
     "nvchad/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup({

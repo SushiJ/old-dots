@@ -75,11 +75,11 @@ function M.setup(opts)
   options = vim.tbl_deep_extend("force", defaults, opts or {})
   if not M.has() then
     require("lazy.core.util").error(
-    "**LazyVim** needs **lazy.nvim** version "
-    .. M.lazy_version
-    .. " to work properly.\n"
-    .. "Please upgrade **lazy.nvim**",
-    { title = "LazyVim" }
+      "**LazyVim** needs **lazy.nvim** version "
+      .. M.lazy_version
+      .. " to work properly.\n"
+      .. "Please upgrade **lazy.nvim**",
+      { title = "LazyVim" }
     )
     error("Exiting")
   end
@@ -92,12 +92,12 @@ function M.setup(opts)
       vim.cmd.colorscheme(M.colorscheme)
     end
   end, {
-  msg = "Could not load your colorscheme",
-  on_error = function(msg)
-    require("lazy.core.util").error(msg)
-    vim.cmd.colorscheme("habamax")
-  end,
-})
+    msg = "Could not load your colorscheme",
+    on_error = function(msg)
+      require("lazy.core.util").error(msg)
+      vim.cmd.colorscheme("habamax")
+    end,
+  })
 end
 
 ---@param range? string
@@ -111,7 +111,7 @@ function M.init()
   if not M.did_init then
     M.did_init = true
     -- delay notifications till vim.notify was replaced or after 500ms
-    require("sushi.util").lazy_notify()
+    -- require("sushi.util").lazy_notify()
     -- load options here, before lazy init while sourcing plugin modules
     -- this is needed to make sure options will be correctly applied
     -- after installing missing plugins
