@@ -13,3 +13,6 @@
 [submodule "lunarvim/.config/LunarVim"]
 	path = lunarvim/.config/LunarVim
 	url = https://github.com/LunarVim/LunarVim.git
+[submodule "doomemacs/.config/emacs"]
+	path = doomemacs/.config/emacs
+	url = https://github.com/doomemacs/doomemacs

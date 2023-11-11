@@ -2,11 +2,17 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-plugins=(zsh-syntax-highlighting zsh-autosuggestions asdf ripgrep node fd httpie vi-mode)
+# source "/home/sushi/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# source "/home/sushi/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# source "/home/sushi/.oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh"
+
+plugins=(zsh-syntax-highlighting zsh-autosuggestions asdf
+    # ripgrep node fd
+httpie vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
-## User configuration
+# User configuration
 
 # Scripts
 bindkey -s ^f "~/scripts/tmux-sessionizer\n"
@@ -22,6 +28,8 @@ else
     export EDITOR='nvim'
 fi
 
+# PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) %{$fg[cyan]%}%c%{$reset_color%}"
+
 # Vi-mode
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 MODE_INDICATOR="%F{white}+%f"
@@ -35,8 +43,9 @@ VI_MODE_CURSOR_NORMAL=1
 VI_MODE_CURSOR_VISUAL=1
 VI_MODE_CURSOR_INSERT=1
 VI_MODE_CURSOR_OPPEND=1
-
+#
 # Aliases
+
 
 alias zc="nvim ~/.zshrc"
 alias sni="sudo nala install"
@@ -82,9 +91,9 @@ PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 export PNPM_HOME="/home/sushi/.local/share/pnpm"
 PATH="$PNPM_HOME:$PATH"
 
-# Ruby
-GEM_PATH="$HOME/.local/share/gem/ruby/3.0.0/bin"
-PATH="$GEM_PATH:$PATH"
+# # Ruby
+# GEM_PATH="$HOME/.local/share/gem/ruby/3.0.0/bin"
+# PATH="$GEM_PATH:$PATH"
 
 #brew
 BREW="/home/linuxbrew/.linuxbrew/bin/"
@@ -111,15 +120,7 @@ go_test() {
 }
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 
 # bun completions
 [ -s "/home/sushi/.bun/_bun" ] && source "/home/sushi/.bun/_bun"
-
-# # pnpm
-# export PNPM_HOME="/home/sushi/.local/share/pnpm"
-# case ":$PATH:" in
-#   *":$PNPM_HOME:"*) ;;
-#   *) export PATH="$PNPM_HOME:$PATH" ;;
-# esac
-# # pnpm end
