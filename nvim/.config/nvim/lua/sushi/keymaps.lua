@@ -121,3 +121,6 @@ map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic mes
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 -- map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 -- map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+map("n", "<leader>e", function()
+  require("oil").toggle_float()
+end, { desc = "Toggle Oil" })

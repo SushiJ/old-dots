@@ -3,6 +3,10 @@ local Util = require("sushi.util")
 return {
   -- file explorer
   {
+    "stevearc/oil.nvim",
+    opts = {},
+  },
+  {
     "nvim-neo-tree/neo-tree.nvim",
     cmd = "Neotree",
     dependencies = {
@@ -25,8 +29,8 @@ return {
         end,
         desc = "Explorer NeoTree (cwd)",
       },
-      { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
-      { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)",      remap = true },
+      -- { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
+      -- { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)",      remap = true },
     },
     deactivate = function()
       vim.cmd([[Neotree close]])
@@ -123,6 +127,7 @@ return {
       { "<leader>fF",      Util.telescope("files", { cwd = false }),           desc = "Find Files (cwd)" },
       { "<leader>fr",      "<cmd>Telescope oldfiles<cr>",                      desc = "Recent" },
       -- git
+      { "<leader>gf",      Util.telescope("git_files"),                        desc = "Search [G]it [F]iles" },
       { "<leader>gc",      "<cmd>Telescope git_commits<CR>",                   desc = "commits" },
       { "<leader>gs",      "<cmd>Telescope git_status<CR>",                    desc = "status" },
       -- search

@@ -80,4 +80,10 @@ return {
     "numToStr/Comment.nvim",
     lazy = false,
   },
+  {
+    "gelguy/wilder.nvim",
+    config = function()
+      require("wilder").setup({ modes = { ":", "/", "?" } })
+    end,
+  },
 }

@@ -73,6 +73,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "spectre_panel",
     "startuptime",
     "tsplayground",
+    "oil",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
@@ -87,6 +88,14 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("oil"),
+  pattern = "oil",
+  callback = function()
+    vim.opt_local.colorcolumn = ""
   end,
 })
 
