@@ -8,6 +8,8 @@ set -g theme_hide_hostname yes
 set -g theme_hostname never
 set -gx EDITOR "nvim"
 
+set -g LANG "en_US.UTF-8"
+
 # Aliases
 
 if type -q exa
@@ -15,6 +17,7 @@ if type -q exa
   alias la "ls -a"
 end
 
+alias lsp="z ~/.local/share/nvim/mason/bin"
 alias zc="nvim ~/.zshrc"
 alias sni="sudo nala install"
 alias wmrc="cd ~/.config/bspwm/ && nvim ."
