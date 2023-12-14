@@ -1,8 +1,8 @@
 return {
 
-  { "nvim-lua/plenary.nvim", lazy = true },
-  { "tpope/vim-repeat",      event = "VeryLazy" },
-
+  { "nvim-lua/plenary.nvim",      lazy = true },
+  { "tpope/vim-repeat",           event = "VeryLazy" },
+  { "nvim-tree/nvim-web-devicons" },
   { "tpope/vim-fugitive" },
   { "tpope/vim-surround" },
   {
