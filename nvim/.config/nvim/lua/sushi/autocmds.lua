@@ -38,6 +38,15 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  group = augroup("ReasonML"),
+  pattern = "*.re,*.rei",
+  desc = "Detect and set the proper file type for ReasonML files",
+  callback = function()
+    vim.cmd("set filetype=reason")
+  end,
+})
+
 vim.api.nvim_create_autocmd({ "BufRead", "BufEnter" }, {
   group = augroup("astro"),
   pattern = "*.astro",
@@ -91,6 +100,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("oil"),
+  pattern = "oil",
+  callback = function()
+    vim.opt_local.colorcolumn = ""
+  end,
+})
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("oil"),
   pattern = "oil",

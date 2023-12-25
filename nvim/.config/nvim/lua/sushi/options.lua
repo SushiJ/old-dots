@@ -52,8 +52,8 @@ opt.colorcolumn = "80"
 opt.encoding = "UTF-8"
 opt.isfname:append("@-@")
 
-opt.list = true
-opt.listchars = { eol = "↴" }
+-- opt.list = true
+-- opt.listchars = { eol = "↴" }
 
 opt.foldcolumn = "1"
 opt.foldlevel = 99

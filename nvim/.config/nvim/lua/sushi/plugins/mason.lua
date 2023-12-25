@@ -18,6 +18,8 @@ return {
     config = function()
       local lsp_zero = require("lsp-zero")
       local lsp_config = require("lspconfig")
+      local rescriptls_path =
+      "/home/sushi/.vscode/extensions/chenglou92.rescript-vscode-1.28.0/server/out/server.js"
       require("mason-lspconfig").setup({
         automatic_installation = true,
         handlers = {
@@ -34,6 +36,20 @@ return {
               capabilities = capabilities,
             })
           end,
+          -- rescriptls = function()
+          --   local opts = {
+          --     cmd = { "node", rescriptls_path, "--stdio" },
+          --     filetypes = { "rescript" },
+          --     init_options = {
+          --       extensionConfiguration = {
+          --         askToStartBuild = false,
+          --       },
+          --     },
+          --     root_dir = lsp_config.util.root_pattern("bsconfig.json"),
+          --     settings = {},
+          --   }
+          --   lsp_config.rescriptls.setup(opts)
+          -- end,
         },
       })
     end,

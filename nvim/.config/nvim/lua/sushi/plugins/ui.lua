@@ -106,8 +106,12 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    opts = {},
-    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require("ibl").setup({
+        indent = { char = "|" },
+        scope = { enabled = false },
+      })
+    end,
   },
   {
     "j-hui/fidget.nvim",
@@ -125,4 +129,5 @@ return {
       },
     },
   },
+  { "HiPhish/rainbow-delimiters.nvim" },
 }

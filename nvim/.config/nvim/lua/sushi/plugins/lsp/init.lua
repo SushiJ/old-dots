@@ -14,7 +14,7 @@ return {
           go({ severity = severity })
         end
       end
-      lsp_zero.on_attach(function(_, bufnr)
+      lsp_zero.on_attach(function(client, bufnr)
         lsp_zero.default_keymaps({ buffer = bufnr })
         local map = function(mode, keys, func, desc)
           if desc then
@@ -31,6 +31,7 @@ return {
         map("", "gD", vim.lsp.buf.declaration, "Goto Declaration")
         map("", "gI", "<cmd>Telescope lsp_implementations<cr>", "Goto Implementation")
         map("", "gt", "<cmd>Telescope lsp_type_definitions<cr>", "Goto Type Definition")
+        -- map("", "K", vim.lsp.buf.hover, "Hover")
         map("", "K", pretty_hover.hover, "Hover")
         map("", "gK", vim.lsp.buf.signature_help, "Signature Help")
         map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")

@@ -1,4 +1,7 @@
 return {
+  -- Reason parser
+  { "danielo515/nvim-treesitter-reason" },
+  { "nkrkv/nvim-treesitter-rescript" },
   {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- last release is way too old and doesn't work on Windows
@@ -29,7 +32,6 @@ return {
         },
       },
     },
-    ---@param opts TSConfig
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
     end,

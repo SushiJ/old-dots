@@ -124,3 +124,10 @@ map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message
 map("n", "<leader>e", function()
   require("oil").toggle_float()
 end, { desc = "Toggle Oil" })
+
+map("n", "<leader>cr", function()
+  return ":IncRename " .. vim.fn.expand("<cword>")
+end, { desc = "Rename", expr = true })
+
+map("n", "gh", "<cmd>diffget //2<CR>", { desc = "diffget FROM LEFT" })
+map("n", "gl", "<cmd>diffget //3<CR>", { desc = "diffget FROM RIGHT" })

@@ -12,6 +12,12 @@ return {
   },
   {
     "windwp/nvim-ts-autotag",
+    ft = {
+      "typescriptreact",
+      "typescript",
+      "javascript",
+      "javascriptreact",
+    },
     config = function()
       require("nvim-ts-autotag").setup()
     end,
@@ -21,6 +27,13 @@ return {
   { "mattn/emmet-vim" },
   { "uga-rosa/ccc.nvim" },
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+
+  {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+    end,
+  },
   {
     "kevinhwang91/nvim-ufo",
     dependencies = {
