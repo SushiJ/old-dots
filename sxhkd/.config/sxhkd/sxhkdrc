@@ -1,14 +1,14 @@
-# terminal emulator
+# wezterm
 super + Return
-	kitty
+	wezterm 
 
 # Dmenu 
 super + r
 	dmenu_run
 
-# Wezterm
-super + ctrl + t
-	wezterm start
+# Kitty
+# super + ctrl + k
+# 	kitty 
 
 super + ctrl + a
 	alacritty

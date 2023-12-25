@@ -52,3 +52,9 @@ set -gx PATH "$GO/bin" "$PNPM_HOME" "$BREW_PATH" "$ASDF/bin" "$BUN_HOME" $PATH
 # source "/home/sushi/.bun/_bun"
 
 zoxide init fish | source
+
+# # opam configuration
+# source /home/sushi/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+
+# opam configuration
+source /home/sushi/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
