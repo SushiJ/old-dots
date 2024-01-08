@@ -131,3 +131,6 @@ end, { desc = "Rename", expr = true })
 
 map("n", "gh", "<cmd>diffget //2<CR>", { desc = "diffget FROM LEFT" })
 map("n", "gl", "<cmd>diffget //3<CR>", { desc = "diffget FROM RIGHT" })
+
+map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "Toggle Term" })
+map("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "Toggle Term" })

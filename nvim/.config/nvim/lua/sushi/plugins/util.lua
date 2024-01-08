@@ -1,5 +1,4 @@
 return {
-
   { "nvim-lua/plenary.nvim",      lazy = true },
   { "tpope/vim-repeat",           event = "VeryLazy" },
   { "nvim-tree/nvim-web-devicons" },
@@ -98,5 +97,13 @@ return {
     config = function()
       require("wilder").setup({ modes = { ":", "/", "?" } })
     end,
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    opts = {
+      direction = "vertical",
+      size = 40,
+    },
   },
 }
