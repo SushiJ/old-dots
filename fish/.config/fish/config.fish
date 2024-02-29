@@ -29,6 +29,7 @@ alias cat="bat"
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
 alias dots="cd ~/.dotfiles"
+alias flyio "flyctl"
 
 # ASDF
 set -gx ASDF "$HOME/.asdf"
@@ -49,12 +50,19 @@ set -gx BUN_HOME "$HOME/.bun/bin"
 
 set -gx PATH "$GO/bin" "$PNPM_HOME" "$BREW_PATH" "$ASDF/bin" "$BUN_HOME" $PATH
 
+# set -gx FLYCTL_INSTALL "/home/sushi/.fly"
+#
+# set -gx PATH "$FLYCTL_INSTALL/bin:$PATH"
+
 # source "/home/sushi/.bun/_bun"
 
 zoxide init fish | source
 
-# # opam configuration
-# source /home/sushi/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-
 # opam configuration
 source /home/sushi/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+
+
+# Binds
+
+bind \cT "tmux-sessionizer"
+

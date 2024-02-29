@@ -16,7 +16,41 @@ config.font = wezterm.font_with_fallback({ "GeistMono", "JetBrainsMono" })
 config.font_size = 16.0
 
 -- Set background to same color as neovim
-config.colors = {}
+config.colors = {
+  tab_bar = {
+    background = "#000000",
+    -- The active tab is the one that has focus in the window
+    active_tab = {
+      bg_color = "#000000",
+      fg_color = "#eb6f92",
+      intensity = "Bold",
+      italic = true,
+    },
+    -- Inactive tabs are the tabs that do not have focus
+    inactive_tab = {
+      bg_color = "#000000",
+      fg_color = "#e0def4",
+      italic = true,
+    },
+
+    inactive_tab_hover = {
+      bg_color = "#21202e",
+      fg_color = "#e0def4",
+      italic = true,
+    },
+
+    new_tab = {
+      bg_color = "#000000",
+      fg_color = "#ebbcba",
+    },
+
+    new_tab_hover = {
+      bg_color = "#21202e",
+      fg_color = "#e0def4",
+    },
+  },
+}
+
 config.colors.background = "#000000"
 
 -- default is true, has more "native" look
