@@ -10,12 +10,16 @@ return {
           nls.builtins.formatting.beautysh,
           nls.builtins.formatting.stylua,
           nls.builtins.formatting.clang_format,
+          nls.builtins.formatting.elm_format,
+          nls.builtins.formatting.scalafmt,
 
-          nls.builtins.diagnostics.eslint_d.with({
-            diagnostics_format = "[eslint] \n#{m}\n(#{c})",
-          }),
+          -- nls.builtins.formatting.biome,
 
-          nls.builtins.code_actions.eslint_d,
+          -- nls.builtins.diagnostics.eslint_d.with({
+          --   diagnostics_format = "[eslint] \n#{m}\n(#{c})",
+          -- }),
+
+          -- nls.builtins.code_actions.eslint_d,
           -- nls.builtins.completion.spell,
         },
       }

@@ -36,20 +36,20 @@ return {
               capabilities = capabilities,
             })
           end,
-          -- rescriptls = function()
-          --   local opts = {
-          --     cmd = { "node", rescriptls_path, "--stdio" },
-          --     filetypes = { "rescript" },
-          --     init_options = {
-          --       extensionConfiguration = {
-          --         askToStartBuild = false,
-          --       },
-          --     },
-          --     root_dir = lsp_config.util.root_pattern("bsconfig.json"),
-          --     settings = {},
-          --   }
-          --   lsp_config.rescriptls.setup(opts)
-          -- end,
+          pylsp = function()
+            lsp_config.pylsp.setup({
+              settings = {
+                pylsp = {
+                  plugins = {
+                    pycodestyle = {
+                      ignore = { "W391", "E501" },
+                      maxLineLength = 100,
+                    },
+                  },
+                },
+              },
+            })
+          end,
         },
       })
     end,

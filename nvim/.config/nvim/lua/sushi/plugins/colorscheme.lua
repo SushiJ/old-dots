@@ -75,4 +75,5 @@ return {
       vim.cmd.colorscheme("catppuccin")
     end,
   },
+  { "SushiJ/vesper-nvim" },
 }

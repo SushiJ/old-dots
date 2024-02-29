@@ -47,11 +47,19 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+-- vim.api.nvim_create_autocmd({ "BufRead", "BufEnter" }, {
+--   group = augroup("astro"),
+--   pattern = "*.astro",
+--   callback = function()
+--     vim.opt_local.filetype = "astro"
+--   end,
+-- })
+
 vim.api.nvim_create_autocmd({ "BufRead", "BufEnter" }, {
-  group = augroup("astro"),
-  pattern = "*.astro",
+  group = augroup("svg"),
+  pattern = "*.svg",
   callback = function()
-    vim.opt_local.filetype = "astro"
+    vim.opt_local.filetype = "html"
   end,
 })
 

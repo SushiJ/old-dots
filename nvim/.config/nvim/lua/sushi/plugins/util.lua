@@ -25,7 +25,6 @@ return {
   { "mbbill/undotree" },
   { "mattn/emmet-vim" },
   { "uga-rosa/ccc.nvim" },
-  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
 
   {
     "smjonas/inc-rename.nvim",
@@ -74,23 +73,37 @@ return {
     "euclio/vim-markdown-composer",
     build = "cargo build --release",
   },
-  {
-    "echasnovski/mini.comment",
-    event = "VeryLazy",
-    opts = {
-      hooks = {
-        pre = function()
-          require("ts_context_commentstring.internal").update_commentstring({})
-        end,
-      },
-    },
-    config = function(_, opts)
-      require("mini.comment").setup(opts)
-    end,
-  },
+  -- {
+  -- 	"echasnovski/mini.comment",
+  -- 	event = "VeryLazy",
+  -- 	opts = {
+  -- 		hooks = {
+  -- 			pre = function()
+  -- 				require("ts_context_commentstring.internal").update_commentstring({})
+  -- 			end,
+  -- 		},
+  -- 	},
+  -- 	config = function(_, opts)
+  -- 		require("mini.comment").setup(opts)
+  -- 	end,
+  -- },
   {
     "numToStr/Comment.nvim",
-    lazy = false,
+    event = { "BufEnter" },
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      config = function()
+        require("ts_context_commentstring").setup({
+          enable_autocmd = false,
+        })
+      end,
+    },
+    config = function()
+      -- Comment configuration object _can_ take a partial and is merged in
+      require("Comment").setup({
+        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+      })
+    end,
   },
   {
     "gelguy/wilder.nvim",
@@ -106,4 +119,5 @@ return {
       size = 40,
     },
   },
+  { "rktjmp/lush.nvim" },
 }

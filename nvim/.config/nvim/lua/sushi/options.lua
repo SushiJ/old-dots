@@ -2,6 +2,7 @@ local opt = vim.opt
 
 opt.guicursor = ""
 opt.autowrite = true           -- Enable auto write
+opt.completeopt = { "menuone", "noinsert", "noselect" }
 opt.conceallevel = 3           -- Hide * markup for bold and italic
 opt.confirm = true             -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true          -- Enable highlighting of the current line

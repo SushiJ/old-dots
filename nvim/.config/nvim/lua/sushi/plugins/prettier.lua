@@ -8,6 +8,7 @@ return {
           "css",
           "graphql",
           "html",
+          "astro",
           "javascript",
           "javascriptreact",
           "json",

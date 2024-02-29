@@ -1,7 +1,7 @@
 return {
   -- Reason parser
   { "danielo515/nvim-treesitter-reason" },
-  { "nkrkv/nvim-treesitter-rescript" },
+  -- { "nkrkv/nvim-treesitter-rescript" },
   {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- last release is way too old and doesn't work on Windows
@@ -17,7 +17,7 @@ return {
       ignore_install = { "" },
       highlight = { enable = true },
       indent = { enable = true, disable = { "python" } },
-      context_commentstring = { enable = true, enable_autocmd = false },
+      -- context_commentstring = { enable = true, enable_autocmd = false },
       ensure_installed = {
         "lua",
         "luap",
