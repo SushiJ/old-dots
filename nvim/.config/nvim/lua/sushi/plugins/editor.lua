@@ -4,11 +4,7 @@ return {
   -- file explorer
   {
     "stevearc/oil.nvim",
-    opts = {
-      view_options = {
-        show_hidden = true,
-      },
-    },
+    opts = {},
   },
 
   -- search/replace in multiple files
@@ -27,7 +23,18 @@ return {
     version = false, -- telescope did only one release, so use HEAD for now
     keys = {
       { "<leader>,",       "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
-      { "<leader>/",       Util.telescope("live_grep"),                        desc = "Find in Files (Grep)" },
+      -- { "<leader>/", Util.telescope("live_grep"), desc = "Find in Files (Grep)" },
+      {
+        "<leader>/",
+        function()
+          require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+            winblend = 10,
+            previewer = false,
+          }))
+        end,
+        { desc = "[/] Fuzzily search in current buffer" },
+      },
+
       { "<leader>:",       "<cmd>Telescope command_history<cr>",               desc = "Command History" },
       { "<leader><space>", Util.telescope("files"),                            desc = "Find Files (root dir)" },
       -- find
@@ -57,7 +64,14 @@ return {
       { "<leader>sw",      Util.telescope("grep_string"),                      desc = "Word (root dir)" },
       { "<leader>sW",      Util.telescope("grep_string", { cwd = false }),     desc = "Word (cwd)" },
       {
-        "<leader>uC",
+        "<leader>sn",
+        function()
+          require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
+        end,
+        desc = "[S]earch [N]eovim files",
+      },
+      {
+        "<leader>uc",
         Util.telescope("colorscheme", { enable_preview = true }),
         desc = "Colorscheme with preview",
       },

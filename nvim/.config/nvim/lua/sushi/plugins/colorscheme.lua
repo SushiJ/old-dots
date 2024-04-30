@@ -32,6 +32,24 @@ return {
     "nyoom-engineering/oxocarbon.nvim",
   },
   {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function()
+      require("gruvbox").setup({
+        palette_overrides = {
+          dark0 = "#000000",
+        },
+        overrides = {
+          SignColumn = {
+            bg = "#000000",
+          },
+        },
+      })
+      vim.cmd.colorscheme("gruvbox")
+    end,
+    opts = {},
+  },
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     config = function()
@@ -72,8 +90,9 @@ return {
         --   end,
         -- },
       })
-      vim.cmd.colorscheme("catppuccin")
+      -- vim.cmd.colorscheme("catppuccin")
     end,
   },
   { "SushiJ/vesper-nvim" },
+  { "savq/melange-nvim" },
 }

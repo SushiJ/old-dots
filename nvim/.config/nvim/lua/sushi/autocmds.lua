@@ -67,6 +67,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufEnter" }, {
   group = augroup("c_lang"),
   pattern = {
     "*.c",
+    "*.h",
     "*.cpp",
   },
   callback = function()

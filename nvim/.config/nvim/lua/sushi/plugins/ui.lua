@@ -3,7 +3,7 @@ return {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     keys = {
-      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
+      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
     },
     opts = {
@@ -13,7 +13,7 @@ return {
         diagnostics_indicator = function(_, _, diag)
           local icons = require("sushi.config").icons.diagnostics
           local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-              .. (diag.warning and icons.Warn .. diag.warning or "")
+            .. (diag.warning and icons.Warn .. diag.warning or "")
           return vim.trim(ret)
         end,
       },
@@ -51,9 +51,9 @@ return {
       }
       return {
         options = {
-          theme = "rose-pine",
+          -- theme = "rose-pine",
           always_divide_middle = false,
-          -- globalstatus = false,
+          globalstatus = true,
           disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
           component_separators = "",
           section_separators = "",

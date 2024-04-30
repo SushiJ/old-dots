@@ -24,13 +24,15 @@ return {
 					vim.keymap.set(mode or "n", keys, func, { buffer = bufnr, desc = desc, silent = true })
 				end
 
-				map("", "<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
-				map("", "<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
-				map("", "gd", "<cmd>Telescope lsp_definitions<cr>", "Goto Definition")
-				map("", "gr", "<cmd>Telescope lsp_references<cr>", "References")
-				map("", "gD", vim.lsp.buf.declaration, "Goto Declaration")
-				map("", "gI", "<cmd>Telescope lsp_implementations<cr>", "Goto Implementation")
-				map("", "gt", "<cmd>Telescope lsp_type_definitions<cr>", "Goto Type Definition")
+				map("", "<leader>cd", vim.diagnostic.open_float, "Show Diagnostics Error")
+				map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
+				map("", "<leader>cl", "<cmd>LspInfo<cr>", "Show Lsp Info")
+				map("", "<leader>rn", vim.lsp.buf.rename, "Rename")
+				map("", "gd", "<cmd>Telescope lsp_definitions<cr>", "[G]oto [D]efinition")
+				map("", "gr", "<cmd>Telescope lsp_references<cr>", "[G]oto [R]eferences")
+				map("", "gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+				map("", "gI", "<cmd>Telescope lsp_implementations<cr>", "[G]oto [I]mplementation")
+				map("", "gt", "<cmd>Telescope lsp_type_definitions<cr>", "[G]oto [T]ype Definition")
 				-- map("", "K", vim.lsp.buf.hover, "Hover")
 				map("", "K", pretty_hover.hover, "Hover")
 				map("", "gK", vim.lsp.buf.signature_help, "Signature Help")
@@ -41,7 +43,6 @@ return {
 				map("", "[e", diagnostic_goto(false, "ERROR"), "Prev Error")
 				map("", "]w", diagnostic_goto(true, "WARN"), "Next Warning")
 				map("", "[w", diagnostic_goto(false, "WARN"), "Prev Warning")
-				map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
 			end)
 		end,
 	},
@@ -62,6 +63,7 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"saadparwaiz1/cmp_luasnip",
 			{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
 		},
 		opts = function()
