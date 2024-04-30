@@ -2,5 +2,5 @@
 
 pkill polybar
 
-polybar example &
+polybar main &
 polybar secondary
