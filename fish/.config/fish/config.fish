@@ -17,6 +17,8 @@ if type -q exa
   alias la "ls -a"
 end
 
+alias p="pnpm"
+alias px="pnpm dlx"
 alias lsp="z ~/.local/share/nvim/mason/bin"
 alias zc="nvim ~/.zshrc"
 alias sni="sudo nala install"
@@ -38,6 +40,8 @@ source ~/.asdf/asdf.fish
 # Go
 set -gx GO "/usr/local/go"
 
+set -gx GO_BIN "/home/sushi/go/bin/"
+
 # Pnpm
 set -gx PNPM_HOME "/home/sushi/.local/share/pnpm"
 
@@ -48,7 +52,7 @@ set -gx BREW_PATH "$BREW" "/home/linuxbrew/.linuxbrew/sbin/"
 # Bun
 set -gx BUN_HOME "$HOME/.bun/bin"
 
-set -gx PATH "$GO/bin" "$PNPM_HOME" "$BREW_PATH" "$ASDF/bin" "$BUN_HOME" $PATH
+set -gx PATH "$GO_BIN" "$GO/bin" "$PNPM_HOME" "$BREW_PATH" "$ASDF/bin" "$BUN_HOME" $PATH
 
 # set -gx FLYCTL_INSTALL "/home/sushi/.fly"
 #
@@ -56,7 +60,7 @@ set -gx PATH "$GO/bin" "$PNPM_HOME" "$BREW_PATH" "$ASDF/bin" "$BUN_HOME" $PATH
 
 # source "/home/sushi/.bun/_bun"
 
-zoxide init fish | source
+zoxide init --cmd cd fish | source
 
 # opam configuration
 source /home/sushi/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
