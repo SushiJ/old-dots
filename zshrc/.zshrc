@@ -124,3 +124,7 @@ go_test() {
 
 # bun completions
 [ -s "/home/sushi/.bun/_bun" ] && source "/home/sushi/.bun/_bun"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

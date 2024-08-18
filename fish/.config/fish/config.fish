@@ -31,7 +31,8 @@ alias cat="bat"
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
 alias dots="cd ~/.dotfiles"
-alias flyio "flyctl"
+# alias tmux="TERM=screen-256color tmux"
+# alias flyio "flyctl"
 
 # ASDF
 set -gx ASDF "$HOME/.asdf"
@@ -65,8 +66,9 @@ zoxide init --cmd cd fish | source
 # opam configuration
 source /home/sushi/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
-
-# Binds
-
-bind \cT "tmux-sessionizer"
-
+# pnpm
+set -gx PNPM_HOME "/home/sushi/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

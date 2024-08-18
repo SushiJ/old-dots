@@ -21,12 +21,9 @@ return {
   },
   {
     "rebelot/kanagawa.nvim",
-    -- config = function()
-    --   require("kanagawa").setup({
-    --     transparent = true,
-    --   })
-    --   vim.cmd([[colorscheme kanagawa]])
-    -- end,
+    config = function()
+      vim.cmd([[colorscheme kanagawa]])
+    end,
   },
   {
     "nyoom-engineering/oxocarbon.nvim",
@@ -45,7 +42,7 @@ return {
           },
         },
       })
-      vim.cmd.colorscheme("gruvbox")
+      -- vim.cmd.colorscheme("gruvbox")
     end,
     opts = {},
   },

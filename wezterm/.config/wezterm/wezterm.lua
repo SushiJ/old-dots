@@ -13,7 +13,7 @@ end
 
 config.color_scheme = "tokyonight"
 config.font = wezterm.font_with_fallback({ "GeistMono", "JetBrainsMono" })
-config.font_size = 16.0
+config.font_size = 12.0
 
 -- Set background to same color as neovim
 config.colors = {

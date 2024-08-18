@@ -1,24 +1,24 @@
 return {
-  {
-    "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    keys = {
-      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
-      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
-    },
-    opts = {
-      options = {
-        diagnostics = "nvim_lsp",
-        show_buffer_close_icons = false,
-        diagnostics_indicator = function(_, _, diag)
-          local icons = require("sushi.config").icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-            .. (diag.warning and icons.Warn .. diag.warning or "")
-          return vim.trim(ret)
-        end,
-      },
-    },
-  },
+  -- {
+  --   "akinsho/bufferline.nvim",
+  --   event = "VeryLazy",
+  --   keys = {
+  --     { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
+  --     { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+  --   },
+  --   opts = {
+  --     options = {
+  --       diagnostics = "nvim_lsp",
+  --       show_buffer_close_icons = false,
+  --       diagnostics_indicator = function(_, _, diag)
+  --         local icons = require("sushi.config").icons.diagnostics
+  --         local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+  --             .. (diag.warning and icons.Warn .. diag.warning or "")
+  --         return vim.trim(ret)
+  --       end,
+  --     },
+  --   },
+  -- },
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",

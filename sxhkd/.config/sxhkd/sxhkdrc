@@ -61,6 +61,14 @@ super + y
 super + g
 	bspc node -s biggest.window
 
+# Rotate 90
+super + n
+  bspc node @/ -R 90
+
+# rotate back 90
+super + b
+  bspc node @/ -L 90
+
 #
 # state/flags
 

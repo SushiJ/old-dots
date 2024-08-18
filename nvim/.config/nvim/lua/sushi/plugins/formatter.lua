@@ -12,6 +12,8 @@ return {
           nls.builtins.formatting.clang_format,
           nls.builtins.formatting.elm_format,
           nls.builtins.formatting.scalafmt,
+          nls.builtins.formatting.black,
+          nls.builtins.formatting.djhtml,
 
           -- nls.builtins.formatting.biome,
 
