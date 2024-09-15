@@ -1,0 +1,46 @@
+import = ["/home/sushi/.config/alacritty/tokyo.toml"]
+live_config_reload = true
+
+[cursor.style]
+blinking = "Always"
+shape = "Block"
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 12.0
+
+[font.bold]
+family = "GeistMono"
+
+[font.bold_italic]
+family = "GeistMono"
+
+[font.italic]
+family = "GeistMono"
+
+[font.normal]
+family = "GeistMono"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Control|Shift"
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[shell]
+program = "/run/current-system/sw/bin/fish"
+
+[window]
+decorations = "full"
+dynamic_title = true
+opacity = 1
+title = "Alacritty"
+
+[window.padding]
+x = 0
+y = 2
