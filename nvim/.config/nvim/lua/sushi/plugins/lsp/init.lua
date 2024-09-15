@@ -1,11 +1,10 @@
 return {
   {
     "VonHeikemen/lsp-zero.nvim",
-    branch = "v3.x",
-    lazy = true,
+    branch = "v4.x",
+    lazy = false, -- Do not make it true
     config = function()
       local lsp_zero = require("lsp-zero")
-      lsp_zero.extend_lspconfig()
       local pretty_hover = require("pretty_hover")
       local function diagnostic_goto(next, severity)
         local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
@@ -14,8 +13,8 @@ return {
           go({ severity = severity })
         end
       end
-      lsp_zero.on_attach(function(_client, bufnr)
-        lsp_zero.default_keymaps({ buffer = bufnr })
+
+      local on_attach = function(_client, bufnr)
         local map = function(mode, keys, func, desc)
           if desc then
             desc = "LSP: " .. desc
@@ -33,8 +32,8 @@ return {
         map("", "gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
         map("", "gI", "<cmd>Telescope lsp_implementations<cr>", "[G]oto [I]mplementation")
         map("", "gt", "<cmd>Telescope lsp_type_definitions<cr>", "[G]oto [T]ype Definition")
-        -- map("", "K", vim.lsp.buf.hover, "Hover")
-        map("", "K", pretty_hover.hover, "Hover")
+        map("", "K", vim.lsp.buf.hover, "Hover")
+        -- map("", "K", pretty_hover.hover, "Hover")
         map("", "gK", vim.lsp.buf.signature_help, "Signature Help")
         map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
         map("", "]d", diagnostic_goto(true), "Next Diagnostic")
@@ -43,7 +42,23 @@ return {
         map("", "[e", diagnostic_goto(false, "ERROR"), "Prev Error")
         map("", "]w", diagnostic_goto(true, "WARN"), "Next Warning")
         map("", "[w", diagnostic_goto(false, "WARN"), "Prev Warning")
-      end)
+      end
+
+      lsp_zero.extend_lspconfig({
+        sign_text = true,
+        lsp_attach = on_attach,
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      })
+
+      -- Language servers
+      local lspconfig = require("lspconfig")
+
+      lspconfig.rust_analyzer.setup {}
+      lspconfig.lua_ls.setup({
+        on_init = function(client)
+          lsp_zero.nvim_lua_settings(client, {})
+        end,
+      })
     end,
   },
   -- LSP Support
@@ -60,7 +75,6 @@ return {
     event = "InsertEnter",
 
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-calc",
@@ -147,11 +161,11 @@ return {
     end,
   },
 
-  -- Scala Lsp
-  {
-    "scalameta/nvim-metals",
-    requires = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
+  -- -- Scala Lsp
+  -- {
+  --   "scalameta/nvim-metals",
+  --   requires = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  -- },
 }

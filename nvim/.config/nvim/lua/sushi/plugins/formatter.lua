@@ -6,14 +6,10 @@ return {
       local nls = require("null-ls")
       return {
         sources = {
-          nls.builtins.formatting.prettierd,
-          nls.builtins.formatting.beautysh,
-          nls.builtins.formatting.stylua,
-          nls.builtins.formatting.clang_format,
-          nls.builtins.formatting.elm_format,
-          nls.builtins.formatting.scalafmt,
-          nls.builtins.formatting.black,
-          nls.builtins.formatting.djhtml,
+          -- nls.builtins.formatting.prettierd,
+          -- nls.builtins.formatting.beautysh,
+          -- nls.builtins.formatting.stylua,
+          -- nls.builtins.formatting.clang_format,
 
           -- nls.builtins.formatting.biome,
 
