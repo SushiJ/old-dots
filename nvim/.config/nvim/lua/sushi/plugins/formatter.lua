@@ -8,7 +8,7 @@ return {
         sources = {
           -- nls.builtins.formatting.prettierd,
           -- nls.builtins.formatting.beautysh,
-          -- nls.builtins.formatting.stylua,
+          nls.builtins.formatting.stylua,
           -- nls.builtins.formatting.clang_format,
 
           -- nls.builtins.formatting.biome,

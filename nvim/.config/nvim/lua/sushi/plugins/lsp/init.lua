@@ -32,8 +32,8 @@ return {
         map("", "gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
         map("", "gI", "<cmd>Telescope lsp_implementations<cr>", "[G]oto [I]mplementation")
         map("", "gt", "<cmd>Telescope lsp_type_definitions<cr>", "[G]oto [T]ype Definition")
-        map("", "K", vim.lsp.buf.hover, "Hover")
-        -- map("", "K", pretty_hover.hover, "Hover")
+        -- map("", "K", vim.lsp.buf.hover, "Hover")
+        map("", "K", pretty_hover.hover, "Hover")
         map("", "gK", vim.lsp.buf.signature_help, "Signature Help")
         map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
         map("", "]d", diagnostic_goto(true), "Next Diagnostic")
@@ -47,18 +47,37 @@ return {
       lsp_zero.extend_lspconfig({
         sign_text = true,
         lsp_attach = on_attach,
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
 
       -- Language servers
       local lspconfig = require("lspconfig")
+      local lsp_configurations = require("lspconfig.configs")
 
-      lspconfig.rust_analyzer.setup {}
+      if not lsp_configurations.ts_ls then
+        lsp_configurations.ts_ls = {
+          default_config = {
+            cmd = { "typescript-language-server", "--stdio" },
+            filetypes = {
+              "javascript",
+              "javascriptreact",
+              "javascript.jsx",
+              "typescript",
+              "typescriptreact",
+              "typescript.tsx",
+            },
+            root_dir = require("lspconfig.util").root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
+          },
+        }
+      end
+
+      lspconfig.rust_analyzer.setup({})
       lspconfig.lua_ls.setup({
         on_init = function(client)
           lsp_zero.nvim_lua_settings(client, {})
         end,
       })
+      lspconfig.ts_ls.setup({})
     end,
   },
   -- LSP Support
