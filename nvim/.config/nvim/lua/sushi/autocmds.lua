@@ -178,25 +178,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return
     end
 
-    -- Tsserver usually works poorly. Sorry you work with bad languages
-    -- You can remove this line if you know what you're doing :)
-    if client.name == "tsserver" then
-      return
-    end
-
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = get_augroup(client),
       buffer = bufnr,
-      callback = function()
+      callback = function(args)
         if not format_is_enabled then
           return
         end
-        vim.lsp.buf.format({
-          async = false,
-          filter = function(c)
-            return c.id == client.id
-          end,
-        })
+        require("conform").format({ bufnr = args.buf })
+        -- vim.lsp.buf.format({
+        --   async = false,
+        --   filter = function(c)
+        --     return c.id == client.id
+        --   end,
+        -- })
       end,
     })
   end,

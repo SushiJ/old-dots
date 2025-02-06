@@ -1,6 +1,6 @@
 return {
-  { "nvim-lua/plenary.nvim",      lazy = true },
-  { "tpope/vim-repeat",           event = "VeryLazy" },
+  { "nvim-lua/plenary.nvim", lazy = true },
+  { "tpope/vim-repeat", event = "VeryLazy" },
   { "nvim-tree/nvim-web-devicons" },
   { "tpope/vim-fugitive" },
   { "tpope/vim-surround" },
@@ -16,6 +16,8 @@ return {
       "typescript",
       "javascript",
       "javascriptreact",
+      "tsx",
+      "jsx",
     },
     config = function()
       require("nvim-ts-autotag").setup()
@@ -23,7 +25,12 @@ return {
   },
 
   { "mbbill/undotree" },
-  { "mattn/emmet-vim" },
+  {
+    "mattn/emmet-vim",
+    config = function()
+      vim.g.user_emmet_leader_key = "<C-t>"
+    end,
+  },
   { "uga-rosa/ccc.nvim" },
 
   {
@@ -70,24 +77,6 @@ return {
     end,
   },
   {
-    "euclio/vim-markdown-composer",
-    build = "cargo build --release",
-  },
-  -- {
-  -- 	"echasnovski/mini.comment",
-  -- 	event = "VeryLazy",
-  -- 	opts = {
-  -- 		hooks = {
-  -- 			pre = function()
-  -- 				require("ts_context_commentstring.internal").update_commentstring({})
-  -- 			end,
-  -- 		},
-  -- 	},
-  -- 	config = function(_, opts)
-  -- 		require("mini.comment").setup(opts)
-  -- 	end,
-  -- },
-  {
     "numToStr/Comment.nvim",
     event = { "BufEnter" },
     dependencies = {
@@ -108,7 +97,36 @@ return {
   {
     "gelguy/wilder.nvim",
     config = function()
-      require("wilder").setup({ modes = { ":", "/", "?" } })
+      local w = require("wilder")
+      w.setup({ modes = { ":", "?" } })
+      w.set_option(
+        "renderer",
+        w.renderer_mux({
+          [":"] = w.popupmenu_renderer({
+            highlighter = w.basic_highlighter(),
+          }),
+          ["/"] = w.wildmenu_renderer({
+            highlighter = w.basic_highlighter(),
+          }),
+        })
+      )
+      w.set_option(
+        "renderer",
+        w.popupmenu_renderer({
+          pumblend = 20,
+        })
+      )
+      w.set_option(
+        "renderer",
+        w.popupmenu_renderer(w.popupmenu_border_theme({
+          highlights = {
+            border = "Normal", -- highlight to use for the border
+          },
+          -- 'single', 'double', 'rounded' or 'solid'
+          -- can also be a list of 8 characters, see :h wilder#popupmenu_border_theme() for more details
+          border = "rounded",
+        }))
+      )
     end,
   },
   {
@@ -119,5 +137,10 @@ return {
       size = 10,
     },
   },
-  { "rktjmp/lush.nvim" },
+  {
+    "dmmulroy/tsc.nvim",
+    config = function()
+      require("tsc").setup()
+    end,
+  },
 }

@@ -6,6 +6,7 @@ return {
     config = function()
       local lsp_zero = require("lsp-zero")
       local pretty_hover = require("pretty_hover")
+
       local function diagnostic_goto(next, severity)
         local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
         severity = severity and vim.diagnostic.severity[severity] or nil
@@ -34,7 +35,6 @@ return {
         map("", "gt", "<cmd>Telescope lsp_type_definitions<cr>", "[G]oto [T]ype Definition")
         -- map("", "K", vim.lsp.buf.hover, "Hover")
         map("", "K", pretty_hover.hover, "Hover")
-        map("", "gK", vim.lsp.buf.signature_help, "Signature Help")
         map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
         map("", "]d", diagnostic_goto(true), "Next Diagnostic")
         map("", "[d", diagnostic_goto(false), "Prev Diagnostic")
@@ -43,12 +43,6 @@ return {
         map("", "]w", diagnostic_goto(true, "WARN"), "Next Warning")
         map("", "[w", diagnostic_goto(false, "WARN"), "Prev Warning")
       end
-
-      lsp_zero.extend_lspconfig({
-        sign_text = true,
-        lsp_attach = on_attach,
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
-      })
 
       -- Language servers
       local lspconfig = require("lspconfig")
@@ -77,7 +71,43 @@ return {
           lsp_zero.nvim_lua_settings(client, {})
         end,
       })
-      lspconfig.ts_ls.setup({})
+      lspconfig.ts_ls.setup({
+        init_options = {
+          plugins = {
+            {
+              name = "@vue/typescript-plugin",
+              location = "/home/sushi/.local/share/pnpm/global/5/node_modules/@vue/typescript-plugin",
+              languages = { "javascript", "typescript", "vue" },
+            },
+          },
+        },
+        filetypes = {
+          "javascript",
+          "typescript",
+          "vue",
+          "typescriptreact",
+          "javascriptreact",
+        },
+      })
+      lspconfig.tailwindcss.setup({})
+      lspconfig.gopls.setup({})
+      lspconfig.nil_ls.setup({})
+      lspconfig.ols.setup({})
+      lspconfig.ccls.setup({})
+      lspconfig.templ.setup({})
+      lspconfig.volar.setup({})
+
+      --Enable (broadcasting) snippet capability for completion
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+      lspconfig.html.setup({
+        capabilities = capabilities,
+        filetypes = { "html", "templ" },
+      })
+      lspconfig.cssls.setup({
+        capabilities = capabilities,
+      })
     end,
   },
   -- LSP Support
@@ -123,18 +153,11 @@ return {
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<C-y>"] = cmp.mapping.confirm({ select = false }),
           ["<S-CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
           }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ["<C-h>"] = function()
-            if cmp.visible_docs() then
-              cmp.close_docs()
-            else
-              cmp.open_docs()
-            end
-          end,
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },

@@ -1,5 +1,5 @@
-import = ["/home/sushi/.config/alacritty/tokyo.toml"]
-live_config_reload = true
+general.import = ["/home/sushi/.config/alacritty/tokyo.toml"]
+general.live_config_reload = true
 
 [cursor.style]
 blinking = "Always"
@@ -12,16 +12,16 @@ TERM = "alacritty"
 size = 12.0
 
 [font.bold]
-family = "GeistMono"
+family = "JetBrainsMono NF"
 
 [font.bold_italic]
-family = "GeistMono"
+family = "JetBrainsMono NF"
 
 [font.italic]
-family = "GeistMono"
+family = "JetBrainsMono NF"
 
 [font.normal]
-family = "GeistMono"
+family = "JetBrainsMono NF"
 style = "Regular"
 
 [[keyboard.bindings]]
@@ -32,7 +32,7 @@ mods = "Control|Shift"
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
-[shell]
+[terminal.shell]
 program = "/run/current-system/sw/bin/fish"
 
 [window]
@@ -44,3 +44,5 @@ title = "Alacritty"
 [window.padding]
 x = 0
 y = 2
+
+[terminal]

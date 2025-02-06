@@ -6,17 +6,11 @@ local function map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-if Util.has("bufferline.nvim") then
-  map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-  map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-  map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-  map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-else
-  map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-  map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-  map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-  map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
-end
+map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
@@ -112,10 +106,6 @@ map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 map("n", "<leader>ps", vim.cmd.ComposerStart, { desc = "Markdown preview start" })
 map("n", "<leader>po", vim.cmd.ComposerOpen, { desc = "Markdown preview open" })
 
--- Remap for dealing with word wrap
-map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
 -- Diagnostic keymaps
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
@@ -139,3 +129,6 @@ map("c", "WQ", "wq", {})
 map("c", "Wq", "wq", {})
 map("c", "W", "w", {})
 map("c", "Q", "q", {})
+
+-- plugin development
+map("n", "<leader>sf", "<cmd>source %<cr>", { desc = "Source current file" })

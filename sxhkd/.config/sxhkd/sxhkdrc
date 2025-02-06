@@ -1,25 +1,17 @@
 # wezterm
 super + Return
-	wezterm 
+	ghostty 
 
 # Dmenu 
 super + r
 	dmenu_run
 
-# Kitty
-# super + ctrl + k
-# 	kitty 
-
 super + ctrl + a
 	alacritty
 
 # Run Explorer
-super + ctrl + f
-	thunar
-
-# Pcmanfm
-super + ctrl + d
-	pcmanfm
+super + ctrl + t
+	nemo
 
 # Pavu
 super + ctrl + v
@@ -28,10 +20,6 @@ super + ctrl + v
 # Screenshot
 super + ctrl + s
   shutter
-
-# Run Brave
-super + ctrl + b
-	brave
 
 # make sxhkd reload its configuration files:
 super + Escape

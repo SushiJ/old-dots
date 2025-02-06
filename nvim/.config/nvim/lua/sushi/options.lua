@@ -14,10 +14,10 @@ opt.ignorecase = true      -- Ignore case
 opt.inccommand = "nosplit" -- preview incremental substitute
 opt.laststatus = 0
 opt.mouse = "a"            -- Enable mouse mode
--- opt.number = true -- Print line number
+opt.number = true          -- Print line number
+opt.relativenumber = true  -- Relative line numbers
 opt.pumblend = 10          -- Popup blend
 opt.pumheight = 10         -- Maximum number of entries in a popup
--- opt.relativenumber = true -- Relative line numbers
 opt.scrolloff = 8          -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 opt.shiftround = true      -- Round indent
@@ -70,4 +70,3 @@ end
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 vim.g.markdown_composer_autostart = 0
-vim.g.markdown_composer_browser = "brave"
